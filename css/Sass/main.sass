@@ -19,7 +19,6 @@ $desktop-width: 1200px
 	-o-transform-origin : #{$name}
 	transform-origin : #{$name}
 
-
 =potato
 	@media only screen and (max-width: #{$phone-width - 1px})
 		@content
@@ -35,6 +34,24 @@ $desktop-width: 1200px
 =desktop
 	@media only screen and (min-width: #{$desktop-width})
 		@content
+
+=font-face($family, $path, $svg, $weight: normal, $style: normal)
+	@font-face
+		font-family: $family
+		src: url('#{$path}.eot')
+		src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype'), url('#{$path}.svg##{$svg}') format('svg')
+		font-weight: $weight
+		font-style: $style
+
+// All credit to Misti Hammers (www.mistifonts.com) for this free font
+// misti.fonts@gmail.com
+// Source: http://www.1001freefonts.com/are_you_freakin_serious.font
++font-face('AreYouFreakinSerious', '../../fonts/AreYouFreakinSerious', 'AreYouFreakinSerious')
+
+body
+	background: cornsilk
+	padding-left: 1%
+	padding-top: 1%
 
 .rotate
 	+transform(-90deg)
@@ -64,8 +81,7 @@ $desktop-width: 1200px
 		width: 5vw
 
 #side-bar
-	+potato
-		width: 20%
+	width: 20%
 	+phone
 		width: 20%
 	+tablet
@@ -74,11 +90,22 @@ $desktop-width: 1200px
 		width: 6%
 
 #main-bar
-	+potato
-		width: 60%
+	background: url('../../images/page_pixels.png') top left repeat
+	display: inline-block
+	font-family: AreYouFreakinSerious
+	font-size: 1.5em
+	width: 60%
 	+phone
 		width: 60%
 	+tablet
 		width: 84%
 	+desktop
 		width: 84%
+
+div [id*='-bar']
+	vertical-align: top
+	min-height: 100%
+
+rect
+	stroke: black
+	fill: green
