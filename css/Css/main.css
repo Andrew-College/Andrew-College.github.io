@@ -65,7 +65,8 @@ body {
   display: inline-block;
   font-family: AreYouFreakinSerious;
   font-size: 1.5em;
-  width: 60%; }
+  width: 60%;
+  line-height: 2.25em; }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     #main-bar {
       width: 60%; } }

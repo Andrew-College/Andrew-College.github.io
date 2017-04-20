@@ -1,0 +1,17 @@
+#lessons-list {
+  margin: 5px; }
+  #lessons-list > .lesson {
+    cursor: pointer;
+    height: 46px;
+    width: auto;
+    margin-bottom: 8px;
+    padding-left: 3px;
+    background: red;
+    list-style: none; }
+
+#content {
+  max-height: 400px;
+  overflow-y: auto;
+  background: url("../../images/page_pixels.png") top left repeat; }
+
+/*# sourceMappingURL=lessons.css.map */
