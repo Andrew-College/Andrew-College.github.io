@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAgCA,OAAO,CAzBL,iBAAiB,CAAG,cAAgB,CACpC,cAAc,CAAG,cAAgB,CACjC,aAAa,CAAG,cAAgB,CAChC,YAAY,CAAG,cAAgB,CAC/B,SAAS,CAAG,cAAgB,CAG5B,wBAAwB,CAAG,YAAQ,CACnC,qBAAqB,CAAG,YAAQ,CAChC,oBAAoB,CAAG,YAAQ,CAC/B,mBAAmB,CAAG,YAAQ,CAC9B,gBAAgB,CAAG,YAAQ,CAiB3B,WAAW,CAAE,IAAI",
-"sources": ["../Sass/Pagetemplate.sass"],
-"names": [],
-"file": "Pagetemplate.css"
-}

@@ -1,0 +1,84 @@
+/* CSS Document */
+
+$potato-width: 0px
+$phone-width: 768px
+$tablet-width: 992px
+$desktop-width: 1200px
+
+=transform($name)
+	-webkit-transform : rotate(#{$name})
+	-moz-transform : rotate(#{$name})
+	-ms-transform : rotate(#{$name})
+	-o-transform : rotate(#{$name})
+	transform : rotate(#{$name})
+
+=transform-origin($name)
+	-webkit-transform-origin : #{$name}
+	-moz-transform-origin : #{$name}
+	-ms-transform-origin : #{$name}
+	-o-transform-origin : #{$name}
+	transform-origin : #{$name}
+
+
+=potato
+	@media only screen and (max-width: #{$phone-width - 1px})
+		@content
+
+=phone
+	@media only screen and (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px})
+		@content
+
+=tablet
+	@media only screen and (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px})
+		@content
+
+=desktop
+	@media only screen and (min-width: #{$desktop-width})
+		@content
+
+.rotate
+	+transform(-90deg)
+	+transform-origin(right bottom)
+	padding-top: 15px
+
+.view-total
+	width: 100vw
+	height: 100vh
+
+.no-flow
+	overflow: hidden
+
+.side-tab
+	height: 20vh
+	width: 18vw
+	background: green
+	float: right
+	border-radius: 5px 0 0 5px
+	margin-top: 10px
+	font-size: 2em
+	+phone
+		width: 11vw
+	+tablet
+		width: 5vw
+	+desktop
+		width: 5vw
+
+#side-bar
+	+potato
+		width: 20%
+	+phone
+		width: 20%
+	+tablet
+		width: 6%
+	+desktop
+		width: 6%
+
+#main-bar
+	+potato
+		width: 60%
+	+phone
+		width: 60%
+	+tablet
+		width: 84%
+	+desktop
+		width: 84%
