@@ -8,7 +8,9 @@ function lesson_clicked(elem) {
   $.ajax({
     url: lesson + '.html',
     dataType: 'html',
-    error: function(x,h,r) {},
+    error: function(x,h,r) {
+      console.log(r)
+    },
     success: function(x,h,r) {lesson_page = x;}
   });
   
