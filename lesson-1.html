@@ -221,7 +221,65 @@ This first lesson will show how you can re-create this game in the Pico-8 Engine
   </li>
   <li>
     Now we're on the home strait! The final bits of code below are pico-8 functions _draw, and _update. <br/>
-    
+    <pre>
+      <code class="lua">
+        ----- main methods
+        function _update()
+          if environment.playing then
+            -- time moves on
+            environment.time += 1
+            -- update the obstacles positions/ status
+            moveobstacles()
+            -- update the players position/ status
+            moveplayer()
+            if btn(1) then
+              if dinosaur.jumping == false then
+                --environment.debug = "jump"
+                jump()
+              end
+            end
+            -- try to spawn an obstacle
+            if canspawn() then
+              -- spawn an obstacle
+              spawn()
+            end
+          else
+          -- you just hit an obstacle, you moose
+            dinosaur.die()
+          end
+        end
+      </code>
+    </pre>
+    <pre>
+      <code class="lua">
+      function _draw()
+        cls()
+        -- sky
+        rectfill( -10, -10, 400, 400, 1)
+        -- mr 'saur
+        spr (dinosaur.sprite, dinosaur.x, dinosaur.y)
+        -- obstacles
+        for _time, _obstacle in pairs(environment.spawn.obstacles) do
+          spr(_obstacle.sprite, _obstacle.x, _obstacle.y)
+        end
+        -- ground
+        rectfill (-10, environment.floor + 10, 400, 400, 10)
+        print (environment.debug, 0, 0, 14)
+        -- game has ended, display the score
+        if environment.playing == false then
+          print ("game over! \r\nyour score: " .. environment.time, 40, 65, 8)
+        else
+          print ("score: " .. environment.time, 80 - #(environment.time .. ""), 0, 2)
+        end
+      end
+      </code>
+    </pre>
   </li>
 </ol>
+<br/>
+Now that we have the logic inplace, we need some drawings!<br/>
+<img class="gif" src="images/navigate_to_sprite_editor.gif" alt="Navigating to the Sprite Editor"><br/>
+Here you fill in blocks of 8X8 pixels to make <a href="https://en.wikipedia.org/wiki/Sprite_%28computer_graphics%29">Sprites</a>.<br/>
+The Logic we had written earlier will use Sprites 0 - 2 for 'saurs movement, Sprite 3 for 'saurs gameover pose. and 4 for the obstacles.<br/>
+<img class="gif" src="images/moving_saur.gif" alt="Moving 'saur">
 </strong>
