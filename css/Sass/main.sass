@@ -53,6 +53,9 @@ body
 	padding-left: 1%
 	padding-top: 1%
 
+.hidden
+	display: none
+	
 .rotate
 	+transform(-90deg)
 	+transform-origin(right bottom)
@@ -111,3 +114,11 @@ div [id*='-bar']
 rect
 	stroke: black
 	fill: green
+
+[class^='hidden-']::before
+	cursor: pointer
+	content: 'Click Here For More >'
+
+[class^='shown-']::before
+	cursor: pointer
+	content: 'Click Here For More ^'

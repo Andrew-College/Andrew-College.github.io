@@ -16,4 +16,16 @@
   overflow-y: auto;
   background: url("../../images/page_pixels.png") top left repeat; }
 
+#full-cart {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1%; }
+
+[class^='hidden-']::before {
+  cursor: pointer;
+  content: "Click Here For The Full Game >"; }
+
+[class^='shown-']::before {
+  cursor: pointer;
+  content: "Click Here For The Full Game ^"; }
+
 /*# sourceMappingURL=lessons.css.map */

@@ -10,6 +10,9 @@ body {
   padding-left: 1%;
   padding-top: 1%; }
 
+.hidden {
+  display: none; }
+
 .rotate {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -85,5 +88,13 @@ div [id*='-bar'] {
 rect {
   stroke: black;
   fill: green; }
+
+[class^='hidden-']::before {
+  cursor: pointer;
+  content: "Click Here For More >"; }
+
+[class^='shown-']::before {
+  cursor: pointer;
+  content: "Click Here For More ^"; }
 
 /*# sourceMappingURL=main.css.map */
