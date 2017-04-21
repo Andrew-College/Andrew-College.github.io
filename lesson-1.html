@@ -15,5 +15,27 @@ This first lesson will show how you can re-create this game in the Pico-8 Engine
 <br/>
 1. In the Pico-8 Program, press the ESC button to jump from the Console Window to the Pico-8 Editor<br/>
 <img src="images/pico_8_main_screen.png" alt="The Pico-8 Console Window"/><img src="images/pico_8_editor_blank.png" alt="The Pico-8 Editor Window"/><br/>
-2. 
+2. To start the program off, we need to setup our games environment
+<pre>
+  <code class="lua">
+    ----- details about the environment
+    environment = {}
+    -- world gravity
+    environment.gravity = -9.83
+    -- low bounds of the world
+    environment.floor = 50
+    -- variable to hold text for debugging purposes
+    environment.debug = "a"
+    -- workarond for amount of time the system is running
+    environment.time = 0
+    -- run the main game loop
+    environment.playing = true
+    ----- spawn stuph
+    environment.spawn = {}
+    environment.spawn.obstacles = {}
+    environment.spawn.timesincelastspawn = 0
+  </code>
+</pre>
+The environment here is used to manage globally available stuff. Constants, gametime, debugging information.<br/>
+Having this all available in one place makes it much easier 
 </strong>

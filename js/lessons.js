@@ -17,6 +17,8 @@ function lesson_clicked(elem) {
       lesson_page ? 
       $(lesson_page) :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
+
+      hljs.initHighlighting();
   }, 1000);
 }
 
