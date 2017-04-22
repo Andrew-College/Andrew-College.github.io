@@ -1,3 +1,5 @@
+var md = new Remarkable();
+
 function lesson_clicked(elem) {
   var lesson = $(elem).attr('id');
 
@@ -19,7 +21,33 @@ function lesson_clicked(elem) {
       lesson_page ? 
       $(lesson_page) :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
+  }, 1000);
+}
 
+function lesson_clicked_md(elem) {
+  var lesson = $(elem).attr('id');
+
+  var lesson_page = null;
+  
+  $('#content').html('Gimme a sec, I\'m writing out ' + lesson + '!');
+
+  $.ajax({
+    url: lesson + '.md',
+    contentType: 'text/plain',
+    dataType: 'text',
+    beforeSend: function( xhr ) {
+      xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+    },
+    success: function(x,h,r) {
+      lesson_page = "" + x;
+    }
+  });
+  
+  setTimeout(function() {
+    $('#content').html( 
+      lesson_page ? 
+      md.render(lesson_page) :
+      'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
       hljs.initHighlighting();
   }, 1000);
 }
