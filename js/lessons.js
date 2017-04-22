@@ -61,9 +61,17 @@ function lesson_clicked_md(elem) {
     
     $('#content').html( 
       lesson_page ? 
-      md.render(lesson_page) :
+      $(unescapeHtml(md.render(lesson_page))) :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
     }, 1000);
+}
+
+function unescapeHtml(safe) {
+    return safe.replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'");
 }
 
 function show_hidden_content(elem, target_id)
