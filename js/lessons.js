@@ -1,5 +1,3 @@
-var md = new Remarkable();
-
 function lesson_clicked(elem) {
   var lesson = $(elem).attr('id');
 
@@ -40,16 +38,32 @@ function lesson_clicked_md(elem) {
     },
     success: function(x,h,r) {
       lesson_page = "" + x;
+      console.log(x);
     }
   });
   
   setTimeout(function() {
+    var md = new Remarkable({
+      highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (err) {}
+        }
+
+        try {
+          return hljs.highlightAuto(str).value;
+        } catch (err) {}
+
+        return ''; // use external default escaping
+      }
+    });
+    
     $('#content').html( 
       lesson_page ? 
       md.render(lesson_page) :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
-      hljs.initHighlighting();
-  }, 1000);
+    }, 1000);
 }
 
 function show_hidden_content(elem, target_id)
