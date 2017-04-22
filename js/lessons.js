@@ -21,7 +21,7 @@ function lesson_clicked(elem) {
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
 
       hljs.initHighlighting();
-  }, 10);
+  }, 1000);
 }
 
 function show_hidden_content(elem, target_id)

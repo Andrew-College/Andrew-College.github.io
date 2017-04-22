@@ -195,49 +195,6 @@ function spawn()
   environment.spawn.obstacles[obstacle.birthtime] = obstacle
 end
 
-
------ main methods
-function _update()
-
- if environment.playing then
-  -- time moves on
-  environment.time += 1
-
-  -- update the obstacles positions/ status
-  moveobstacles()
-
-  -- update the players position/ status
-  moveplayer()
-
-  if btn(1) then
-
-   if dinosaur.jumping == false then
-
-     --environment.debug = "jump"
-
-     jump()
-
-   end
-
-  end
-
-  -- try to spawn an obstacle
-  if canspawn() then
-
-   -- spawn an obstacle
-   spawn()
-
-  end
-
- else
-
- -- you just hit an obstacle, you moose
-  dinosaur.die()
-
- end
-
-end
-
 function _draw()
   cls()
 

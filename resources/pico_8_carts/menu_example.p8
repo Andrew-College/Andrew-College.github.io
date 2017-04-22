@@ -2,13 +2,14 @@ pico-8 cartridge // http://www.pico-8.com
 version 8
 __lua__
 
-
 game = {}
-back_game = {}
 
 game_menu = {
+  -- Colour for selected menu item
   selected = 1,
+  -- Colour for unselected menu item
   not_selected = 9,
+  -- three menu items
   menu_items = {
     start = {"test", false, 0, 0, 25, 13, nil},
     first = {"this", false, 0, 15, 25, 28, nil},
@@ -17,22 +18,21 @@ game_menu = {
   mouse = { 0, 0, 0 }
 }
 
+-- when game_menu is the current logic in-use, this will be the update function 
 game_menu.update = function()
   game.mouse = { stat(32), stat(33), stat(34) }
-  
   for idx, elem in pairs(game_menu.menu_items) do
     elem[2] =
       between(game.mouse[1], elem[3] + 50, elem[5] + 50) and
       between(game.mouse[2], elem[4] + 30, elem[6] + 30)
-      
     if elem[2] and game.mouse[3] == 1 then
       game = elem[7]
       return
     end
-    
   end
 end
 
+-- when game_menu is the current logic in-use, this will be the draw function
 game_menu.draw = function()
   local offsetx = 50
   local offsety = 30
@@ -49,13 +49,15 @@ game_menu.draw = function()
   end
 end
 
+-- Render the cursor (Sprite 0)
 game_menu.draw_mouse_if_exists = function()
   if game.mouse then
-    //print("meme", game.mouse[1], game.mouse[2])
     spr(0, game.mouse[1], game.mouse[2])
   end
 end
 
+-- Only implement a draw method
+-- These elements do not need update logic
 game_start = {}
 
 game_start.draw = function()
@@ -78,6 +80,11 @@ function global_updates()
   
 end
 
+--[[
+  On initialisation, set game_menu as the current menu,
+  populate the logic of the menu_items,
+  listen for mouse input (the 'poke' thing)
+]]--
 function _init()
   poke(0x5f2d, 1)
   game = game_menu
