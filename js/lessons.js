@@ -1,4 +1,21 @@
+var md = new Remarkable({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value;
+      } catch (err) {}
+    }
+
+    try {
+      return hljs.highlightAuto(str).value;
+    } catch (err) {}
+
+    return ''; // use external default escaping
+  }
+});
+
 function lesson_clicked(elem) {
+ 
   var lesson = $(elem).attr('id');
 
   var lesson_page = null;
@@ -17,8 +34,10 @@ function lesson_clicked(elem) {
   setTimeout(function() {
     $('#content').html( 
       lesson_page ? 
-      $(lesson_page) :
+      "<strong>" + lesson_page + "</strong>" :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
+
+    $('.language-lua').each(function(i, block){hljs.highlightBlock(block);})
   }, 1000);
 }
 
@@ -43,25 +62,10 @@ function lesson_clicked_md(elem) {
   });
   
   setTimeout(function() {
-    var md = new Remarkable({
-      highlight: function (str, lang) {
-        if (lang && hljs.getLanguage(lang)) {
-          try {
-            return hljs.highlight(lang, str).value;
-          } catch (err) {}
-        }
 
-        try {
-          return hljs.highlightAuto(str).value;
-        } catch (err) {}
-
-        return ''; // use external default escaping
-      }
-    });
-    
     $('#content').html( 
       lesson_page ? 
-      $(unescapeHtml(md.render(lesson_page))) :
+      md.render(lesson_page) :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
     }, 1000);
 }
