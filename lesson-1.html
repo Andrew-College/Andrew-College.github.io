@@ -1,35 +1,31 @@
-<strong>
-If you have ever had to suffer through an internet dropout, chances are you will have seen this page on Google Chrome.<br/>
-<img src="images/failed_to_connect_to_THE_INTERNET.png" alt="A web browser screen showing the User that they are not connected to the Internet"/><br/>
-What you might not know is that pressing the spacebar starts up a little jumping game!<br/>
-<img src="images/the_game.png" alt="A screenshot of the offline jumping game available in Chrome"/><br/>
-Pressing the spacebar makes the Dino jump so that it can avoid the pesky cacti that get in its way.<br/><br/>
-This first lesson will show how you can re-create this game in the Pico-8 Engine!<br/>
+<h1>Introduction</h1>
+<p>If you have ever had to suffer through an internet dropout, chances are you will have seen this page on Google Chrome.</p>
+<p><img src="images/failed_to_connect_to_THE_INTERNET.png" alt="A web browser screen showing the User that they are not connected to the Internet" title="A web browser screen showing the User that they are not connected to the Internet" /></p>
+<p>What you might not know is that pressing the spacebar starts up a little jumping game!</p>
+<p><img src="images/the_game.png" alt="A screenshot of the offline jumping game available in Chrome" title="A screenshot of the offline jumping game available in Chrome" /></p>
+<p>Pressing the spacebar makes the Dino jump so that it can avoid the pesky cacti that get in its way.</p>
+<p>This first lesson will show how you can re-create this game in the Pico-8 Engine!</p>
 <div class="hidden-content" onclick="show_hidden_content(this, '#full-cart')"/></div>
 <div id="full-cart" class="hidden">
-  The full game is available <a href="resources/pico_8_carts/OfflineDino.p8">here</a>.<br/>
-  You can load this game up by copying the p8 file into your 'Carts' folder, then typing 'load offlinedino' into the pico-8 Console<br/>
-  <img src="images/loading_offline_dino.png" alt="Loading the offline Dino Cart"/>
+  The full game is <a href="./resources/pico_8_carts/OfflineDino.p8">available here</a>
+<p>You can load this game up by copying the p8 file into your ‘Carts’ folder, then typing ‘load offlinedino’ into the pico-8 Console
+<img src="images/loading_offline_dino.png" alt="Loading the offline Dino Cart" title="Loading the offline Dino Cart" /></p>
 </div>
-
-<br/>
 <ol>
-  <li>
-  In the Pico-8 Program, press the ESC button to jump from the Console Window to the Pico-8 Editor<br/>
-  <img src="images/pico_8_main_screen.png" alt="The Pico-8 Console Window"/><img src="images/pico_8_editor_blank.png" alt="The Pico-8 Editor Window"/>
-  </li>
-  <li>
-    To start the program off, we need to setup our games environment
-    <pre>
-      <code class="lua">
------ details about the environment
+<li>In the Pico-8 Program, press the ESC button to jump from the Console Window to the Pico-8 Editor</li>
+</ol>
+<p><img src="images/pico_8_main_screen.png" alt="The Pico-8 Console Window" title="The Pico-8 Console Window" /> <img src="images/pico_8_editor_blank.png" alt="The Pico-8 Editor Window" title="The Pico-8 Editor Window" /></p>
+<ol start="2">
+<li>To start the program off, we need to setup our games environment</li>
+</ol>
+<pre><code class="language-lua">----- details about the environment
 environment = {}
 -- world gravity
 environment.gravity = -9.83
 -- low bounds of the world
 environment.floor = 50
 -- variable to hold text for debugging purposes
-environment.debug = "a"
+environment.debug = &quot;a&quot;
 -- workarond for amount of time the system is running
 environment.time = 0
 -- run the main game loop
@@ -38,16 +34,13 @@ environment.playing = true
 environment.spawn = {}
 environment.spawn.obstacles = {}
 environment.spawn.timesincelastspawn = 0
-      </code>
-    </pre>
-    The environment here is used to manage globally available stuff. Constants, gametime, debugging information.
-    Having this all available in one place makes it much easier to make changes later.
-  </li>
-  <li>
-    Next, we need to setup up 'saur, the official/ unofficial hero(ine) of this game.
-    <pre>
-      <code class="lua">
--- our hero, mr 'saur
+</code></pre>
+<p>The environment here is used to manage globally available stuff. Constants, gametime, debugging information.
+Having this all available in one place makes it much easier to make changes later.</p>
+<ol start="3">
+<li>Next, we need to setup up 'saur, the official/ unofficial hero(ine) of this game.</li>
+</ol>
+<pre><code class="language-lua">-- our hero, mr 'saur
 dinosaur = {}
 -- unlikely to change, but useful for collision detection
 dinosaur.x = 50
@@ -62,18 +55,15 @@ dinosaur.jumpspeed = 0
 -- amount of time in-air
 dinosaur.timejumping = 0
 -- mr saurs movement sprite
-dinosaur.sprite = 0  
-      </code>
-    </pre>
-    Each of these properties will be used to control our player.
-  </li>
-  <li>
-    Now that 'saur has been developed, we need to give 'saur some logic!
-    <pre>
-      <code class="lua">
--- bounding box collision detection
+dinosaur.sprite = 0
+</code></pre>
+<p>Each of these properties will be used to control our player.</p>
+<ol start="4">
+<li>Now that 'saur has been developed, we need to give 'saur some logic!</li>
+</ol>
+<pre><code class="language-lua">-- bounding box collision detection
 dinosaur.collide = function()
-  local _str = ""
+  local _str = &quot;&quot;
   --[[
     {xl,yl}______
           |     |
@@ -84,9 +74,9 @@ dinosaur.collide = function()
     xl = dinosaur.x + 1, yl = dinosaur.y,
     xr = dinosaur.x + 7, yr = dinosaur.y + 8
   }
-  _str = _str .. "saur: \r\n"
+  _str = _str .. &quot;saur: \r\n&quot;
   for k, v in pairs(saur) do
-    _str = _str .. "{ key: " .. k .. ", value: " .. v .. "}\r\n"
+    _str = _str .. &quot;{ key: &quot; .. k .. &quot;, value: &quot; .. v .. &quot;}\r\n&quot;
   end
 
   -- _time = birthtime of the obstacles
@@ -97,14 +87,14 @@ dinosaur.collide = function()
       xr = __obstacle.x + 7, yr = __obstacle.y + 8
     }
 
-    _str = _str .. "\r\n obs: \r\n"
+    _str = _str .. &quot;\r\n obs: \r\n&quot;
     for k, v in pairs(_obs) do
-      _str = _str .. "{ key: " .. k .. ", value: " .. v .. "}\r\n"
+      _str = _str .. &quot;{ key: &quot; .. k .. &quot;, value: &quot; .. v .. &quot;}\r\n&quot;
     end
     if
       (
-        ( _obs.xl <= saur.xr and _obs.xr >= saur.xr ) and
-        ( _obs.yl <= saur.yr and _obs.yr >= saur.yr )
+        ( _obs.xl &lt;= saur.xr and _obs.xr &gt;= saur.xr ) and
+        ( _obs.yl &lt;= saur.yr and _obs.yr &gt;= saur.yr )
       )
     then
       return true
@@ -118,26 +108,23 @@ end
 dinosaur.die = function()
   dinosaur.sprite = 3
 end
-      </code>
-    </pre>
-    The big thing here is what is called <a href="http://devmag.org.za/2009/04/13/basic-collision-detection-in-2d-part-1/">Bounding Box Collision</a>. 
-    It's a simple physics technique that lets the game know if two boxes intersect (one is somewhat inside the other). 
-    If any of the obstacles (cacti here) collide with 'saur, then it's 'Game Over Man'!<br/>
-    Also, the '_str' dotted about the place is a way to see what is currently happening in the game.
-    As shown here, the debugging information can show where 'saur is, where obstacles are, and when the obstacles spawn and despawn.<br/>
-    <img class="gif" src="images/debugging_obstacles.gif" alt="A gif image showing the game debugging obstacles spawning and despawning"><br/>
-    The last bit shows the sprite of 'saur when it's game over. More on sprites later!<br/>
-  </li>
-  <li>
-    The next few code blocks handle moving various bits about. Moving the player:
-    <pre>
-      <code class="lua">
--- handle all movement of mr. 'saur
+</code></pre>
+<p>The big thing here is what is called <a href="http://devmag.org.za/2009/04/13/basic-collision-detection-in-2d-part-1/">Bounding Box Collision</a>.
+It’s a simple physics technique that lets the game know if two boxes intersect (one is somewhat inside the other).
+If any of the obstacles (cacti here) collide with 'saur, then it’s 'Game Over Man’!
+Also, the ‘_str’ dotted about the place is a way to see what is currently happening in the game.
+As shown here, the debugging information can show where 'saur is, where obstacles are, and when the obstacles spawn and despawn.
+<a href="images/debugging_obstacles.gif" title="A gif image showing the game debugging obstacles spawning and despawning">A gif image showing the game debugging obstacles spawning and despawning</a>
+The last bit shows the sprite of 'saur when it’s game over. More on sprites later!</p>
+<ol start="5">
+<li>The next few code blocks handle moving various bits about. Moving the player:</li>
+</ol>
+<pre><code class="language-lua">-- handle all movement of mr. 'saur
 function moveplayer()
 
   -- flip 'saurs sprite, to give the impression of running
   dinosaur.sprite += 1
-  if dinosaur.sprite > 2 then
+  if dinosaur.sprite &gt; 2 then
     dinosaur.sprite = 0
   end
 
@@ -153,7 +140,7 @@ function moveplayer()
   end
 
   -- check if the next frame will bring 'saur beneath the floor. it can walk out the door, get on the floor, but it cannot be under the floor
-  if dinosaur.y - dinosaur.jumpspeed > 80 then
+  if dinosaur.y - dinosaur.jumpspeed &gt; 80 then
     -- set the state to be a non-jumper
     dinosaur.jumping = false
     -- make sure 'saur is in the right place
@@ -171,36 +158,30 @@ function jump()
   dinosaur.jumping = true
   dinosaur.timejumping = 0
 end
-      </code>
-    </pre>
-    Moving the obstacles
-    <pre>
-      <code class="lua">
--- handle movement of the obstacles
+</code></pre>
+<p>Moving the obstacles</p>
+<pre><code class="language-lua">-- handle movement of the obstacles
 function moveobstacles()
   -- _time = birthtime of the obstacles
   -- __obstacle = obstacle, that can hit the player
   for _time, __obstacle in pairs(environment.spawn.obstacles) do
     __obstacle.x -= 5
     -- memory management, remove any obstacles that are offscreen
-    if __obstacle.x <= -50 then
+    if __obstacle.x &lt;= -50 then
       environment.spawn.obstacles[_time] = nil
     end
   end
 end
-      </code>
-    </pre>
-    The finally, the obstacle (de)spawn logic
-    <pre>
-      <code class="lua">
--- test to see if an obstacle can/ should spawn
+</code></pre>
+<p>The finally, the obstacle (de)spawn logic</p>
+<pre><code class="language-lua">-- test to see if an obstacle can/ should spawn
 function canspawn()
   -- attempt to pass the obstacle spawner
-  if environment.spawn.timesincelastspawn <= 0 then
+  if environment.spawn.timesincelastspawn &lt;= 0 then
     -- set a timeout for the next chance to attempt a spawn check
     environment.spawn.timesincelastspawn = flr((rnd(10)*0.1) * 50)
     -- randomise the possibility of an obstacl spawn
-    return (rnd(10)*0.1) > 0.5
+    return (rnd(10)*0.1) &gt; 0.5
   end
   environment.spawn.timesincelastspawn -= 1
   return false
@@ -216,14 +197,11 @@ function spawn()
   }
   environment.spawn.obstacles[obstacle.birthtime] = obstacle
 end
-      </code>
-    </pre>
-  </li>
-  <li>
-    Now we're on the home strait! The final bits of code below are pico-8 functions _draw, and _update. <br/>
-    <pre>
-      <code class="lua">
------ main methods
+</code></pre>
+<ol start="6">
+<li>Now we’re on the home strait! The final bits of code below are pico-8 functions _draw, and _update.</li>
+</ol>
+<pre><code class="language-lua">----- main methods
 function _update()
   if environment.playing then
     -- time moves on
@@ -234,7 +212,7 @@ function _update()
     moveplayer()
     if btn(1) then
       if dinosaur.jumping == false then
-        --environment.debug = "jump"
+        --environment.debug = &quot;jump&quot;
         jump()
       end
     end
@@ -248,11 +226,8 @@ function _update()
     dinosaur.die()
   end
 end
-      </code>
-    </pre>
-    <pre>
-      <code class="lua">
-function _draw()
+</code></pre>
+<pre><code class="language-lua">function _draw()
   cls()
   -- sky
   rectfill( -10, -10, 400, 400, 1)
@@ -267,24 +242,20 @@ function _draw()
   print (environment.debug, 0, 0, 14)
   -- game has ended, display the score
   if environment.playing == false then
-    print ("game over! \r\nyour score: " .. environment.time, 40, 65, 8)
+    print (&quot;game over! \r\nyour score: &quot; .. environment.time, 40, 65, 8)
   else
-    print ("score: " .. environment.time, 80 - #(environment.time .. ""), 0, 2)
+    print (&quot;score: &quot; .. environment.time, 80 - #(environment.time .. &quot;&quot;), 0, 2)
   end
 end
-      </code>
-    </pre>
-  </li>
+</code></pre>
+<ol start="7">
+<li>Now that we have the logic inplace, we need some drawings</li>
 </ol>
-<br/>
-Now that we have the logic inplace, we need some drawings!<br/>
-<img class="gif" src="images/navigate_to_sprite_editor.gif" alt="Navigating to the Sprite Editor"><br/>
-Here you fill in blocks of 8X8 pixels to make <a href="https://en.wikipedia.org/wiki/Sprite_%28computer_graphics%29">Sprites</a>.<br/>
-The Logic we had written earlier will use Sprites 0 - 2 for 'saurs movement, Sprite 3 for 'saurs gameover pose. and 4 for the obstacles.<br/>
-<img class="gif" src="images/moving_saur.gif" alt="Moving 'saur"><br/>
-Now that we have this all up and running, we can give the game a whirl!
-<img src="images/running_the_game.gif" alt="Using the run command" class="gif">
-<br/><br/>
-If you've made it this far, Conglaturations! A winner is you!<br/>
-Y'know what to do next? Have a poke through this code. Change the Sprites. Who knows? Maybe a chicken may want to spend a game jumping over cars!
-</strong>
+<p><img src="images/navigate_to_sprite_editor.gif" alt="Navigating to the Sprite Editor" title="Navigating to the Sprite Editor" /></p>
+<p>Here you fill in blocks of 8X8 pixels to make <a href="https://en.wikipedia.org/wiki/Sprite_%28computer_graphics%29">Sprites</a>.</p>
+<p>The Logic we had written earlier will use Sprites 0 - 2 for 'saurs movement, Sprite 3 for 'saurs gameover pose. and 4 for the obstacles.</p>
+<p><img src="images/moving_saur.gif" alt="Moving 'saur" title="Moving 'saur" /></p>
+<p>Now that we have this all up and running, we can give the game a whirl!</p>
+<p><img src="images/running_the_game.gif" alt="Using the run command" title="Using the run command" /></p>
+<p>If you’ve made it this far, Conglaturations! A winner is you!</p>
+<p>Y’know what to do next? Have a poke through this code. Change the Sprites. Who knows? Maybe a chicken may want to spend a game jumping over cars!</p>
