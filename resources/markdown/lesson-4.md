@@ -9,7 +9,9 @@ Getting stuff done involves using [VS Code](https://code.visualstudio.com/). Thi
 
 Writing standard HTML, CSS, and Javascript is all well and good, but in this modern time, I've been using:
 
-- [Emmett](https://emmet.io/) - Emmet is a scripting language used to write loads of html code using a shortened pattern. *VSCode has this by default*
+- [Emmett](https://emmet.io/)
+
+  Emmet is a scripting language used to write loads of html code using a shortened pattern. *VSCode has this by default*
 
   The Emmet script:
   ```html
@@ -35,59 +37,65 @@ Writing standard HTML, CSS, and Javascript is all well and good, but in this mod
    </html>
   ```
 
-- [Sass](http://sass-lang.com/) - Sass is a CSS tool that (kinda like emmet) gives more out than you write in!
+- [Sass](http://sass-lang.com/) 
 
-Sass code looks something like:
+  Sass is a CSS tool that (kinda like emmet) gives more out than you write in!
 
-```
-#content
-  max-height: 600px
-  overflow-y: auto
-  background: url("../../images/page_pixels.png") top left repeat
-  .gif
-    width: 400px
-  & p, & pre
-    padding-left: 2em
-```
+  Sass code looks something like:
 
-Will become the following Css:
+  ```
+  #content
+    max-height: 600px
+    overflow-y: auto
+    background: url("../../images/page_pixels.png") top left repeat
+    .gif
+      width: 400px
+    & p, & pre
+      padding-left: 2em
+  ```
 
-```Css
-#content {
-  max-height: 600px;
-  overflow-y: auto;
-  background: url("../../images/page_pixels.png") top left repeat; }
-  #content .gif {
-    width: 400px; }
-  #content p, #content pre {
-    padding-left: 2em; }
-```
+  Will become the following Css:
 
-- [JQuery](https://jquery.com/) - JQuery is a powerful Javascript library that just makes Javascript so much cooler! JQuery makes complex stuff a doddle!
+  ```Css
+  #content {
+    max-height: 600px;
+    overflow-y: auto;
+    background: url("../../images/page_pixels.png") top left repeat; }
+    #content .gif {
+      width: 400px; }
+    #content p, #content pre {
+      padding-left: 2em; }
+  ```
 
-For example, the JQuery
+- [JQuery](https://jquery.com/) 
 
-```javascript
-$('div.header').css('background', 'red');
-```
+  JQuery is a powerful Javascript library that just makes Javascript so much cooler! JQuery makes complex stuff a doddle!
 
-does exactly the same job as
+  For example, the JQuery
 
-```javascript
-/* 
-* Note - 
-*  This is untested. 
-*  I'm 99.9999% certain this works,
-*  but it is exacly what the Jquery is NOT doing...
-*/
-var divs = document.getElementsByTagName("div");
+  ```javascript
+  $('div.header').css('background', 'red');
+  ```
 
-for (var i=0, max=divs.length; i < max; i++) {
-  var elem = divs[0].getElementsByClassName("header");
-  for (var elem_i=0, elem_max=elem.length; elem_i < elem_max; elem_i++) {
-    elem[elem_i].style.background = "red";
+  does exactly the same job as
+
+  ```javascript
+  /* 
+  * Note - 
+  *  This is untested. 
+  *  I'm 99.9999% certain this works,
+  *  but it is exacly what the Jquery is NOT doing...
+  */
+  var divs = document.getElementsByTagName("div");
+
+  for (var i=0, max=divs.length; i < max; i++) {
+    var elem = divs[0].getElementsByClassName("header");
+    for (var elem_i=0, elem_max=elem.length; elem_i < elem_max; elem_i++) {
+      elem[elem_i].style.background = "red";
+    }
   }
-}
-```
+  ```
 
-- [Markdown](https://en.wikipedia.org/wiki/Markdown) - Writing out the html for the code blocks, links, images, etc. is tedious. Markdown is an up-and-coming standard for documentation that takes so little (all of these lessons are found in the [resources => markdown](https://github.com/Andrew-College/Andrew-College.github.io/tree/master/resources/markdown) section of my repository.)
+- [Markdown](https://en.wikipedia.org/wiki/Markdown) 
+
+  Writing out the html for the code blocks, links, images, etc. is tedious. Markdown is an up-and-coming standard for documentation that takes so little (all of these lessons are found in the [resources => markdown](https://github.com/Andrew-College/Andrew-College.github.io/tree/master/resources/markdown) section of my repository.)
