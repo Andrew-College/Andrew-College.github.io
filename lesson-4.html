@@ -1,11 +1,51 @@
-<strong>
-  Righto, so we need to make changes to this website! <br/>
-  At the moment, the code is hosted on my <a href="http:\github.com/Andrew-College">Github Account</a> (<a href="https://github.com/Andrew-College/Andrew-College.github.io">Here's the repository</a>)
-  <div id="markContent"></div>
-  <script>
-    var md = new Remarkable();
-
-    document.getElementById('markContent').innerHTML = md.render(
-      "```lua\r\nfunction hello()\r\nend\r\n```");
-  </script>
-</strong>
+<p>Righto, so we need to make changes to this website!</p>
+<p>At the moment, the code is hosted on my <a href="http://github.com/Andrew-College">Github Account</a> (<a href="https://github.com/Andrew-College/Andrew-College.github.io">Here’s the repository</a>)</p>
+<p>There are a number of technologies that go into making this site. Most are handy tools that helped make adding and changing stuff easier!</p>
+<p>First off, the Development Environment.
+Getting stuff done involves using <a href="https://code.visualstudio.com/">VS Code</a>. This is by no means the only Editor used for writing stuff, but It’s certainly easy to get up and running.</p>
+<p>Writing standard HTML, CSS, and Javascript is all well and good, but in this modern time, I’ve been using:</p>
+<ul>
+<li><p><a href="https://emmet.io/">Emmett</a> - Emmet is a scripting language used to write loads of html code using a shortened pattern. <em>VSCode has this by default</em></p>
+<p>The Emmet script:</p>
+<pre><code class="language-html">!&gt;div.topper&gt;((span.middler1)+(#middler2&gt;img[src=&quot;images/the_game.png&quot;]))
+</code></pre>
+<p>becomes:</p>
+<pre><code class="language-html"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+    &lt;div class=&quot;topper&quot;&gt;
+       &lt;span class=&quot;middler1&quot;&gt;&lt;/span&gt;
+       &lt;div id=&quot;middler2&quot;&gt;&lt;img src=&quot;images/the_game.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre></li>
+<li><p><a href="http://sass-lang.com/">Sass</a> - Sass is a CSS tool that (kinda like emmet) gives more out than you write in!</p></li>
+</ul>
+<p>Sass code looks something like:</p>
+<pre><code>#content
+  max-height: 600px
+  overflow-y: auto
+  background: url(&quot;../../images/page_pixels.png&quot;) top left repeat
+  .gif
+    width: 400px
+  &amp; p, &amp; pre
+    padding-left: 2em
+</code></pre>
+<p>Will become the following Css:</p>
+<pre><code class="language-Css">#content {
+  max-height: 600px;
+  overflow-y: auto;
+  background: url(&quot;../../images/page_pixels.png&quot;) top left repeat; }
+  #content .gif {
+    width: 400px; }
+  #content p, #content pre {
+    padding-left: 2em; }
+</code></pre>
+<p><img src="images/sass_compiling_code.png" alt="Compiling Sass code (Sass Folder) to Css (Css Folder)" title="Compiling Sass code (Sass Folder) to Css (Css Folder)" /></p>

@@ -37,7 +37,7 @@ function lesson_clicked(elem) {
       "<strong>" + lesson_page + "</strong>" :
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
 
-    $('.language-lua').each(function(i, block){hljs.highlightBlock(block);})
+    $('pre').each(function(i, block){hljs.highlightBlock(block);})
   }, 1000);
 }
 
