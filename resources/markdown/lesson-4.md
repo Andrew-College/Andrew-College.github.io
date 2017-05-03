@@ -9,9 +9,13 @@ Getting stuff done involves using [VS Code](https://code.visualstudio.com/). Thi
 
 Writing standard HTML, CSS, and Javascript is all well and good, but in this modern time, I've been using:
 
-- [Emmett](https://emmet.io/)
+- # [Emmett](https://emmet.io/) 
+![Emmet Icon](images/Emmet.png "Emmet Icon")
 
-  Emmet is a scripting language used to write loads of html code using a shortened pattern. *VSCode has this by default*
+  ## Description
+  A scripting language used to write loads of html code using a shortened pattern. *VSCode has this by default*
+
+  ## Example
 
   The Emmet script:
   ```html
@@ -37,9 +41,13 @@ Writing standard HTML, CSS, and Javascript is all well and good, but in this mod
    </html>
   ```
 
-- [Sass](http://sass-lang.com/) 
+- # [Sass](http://sass-lang.com/) 
+![Sass Icon](images/Sass.png "Sass Icon")
 
+  ## Description
   Sass is a CSS tool that (kinda like emmet) gives more out than you write in!
+
+  ## Example
 
   Sass code looks something like:
 
@@ -67,11 +75,14 @@ Writing standard HTML, CSS, and Javascript is all well and good, but in this mod
       padding-left: 2em; }
   ```
 
-- [JQuery](https://jquery.com/) 
+- # [JQuery](https://jquery.com/) 
+![JQuery Icon](images/JQuery.png "JQuery Icon") 
 
+  ## Description
   JQuery is a powerful Javascript library that just makes Javascript so much cooler! JQuery makes complex stuff a doddle!
 
-  For example, the JQuery
+  ## Example
+  This here JQuery
 
   ```javascript
   $('div.header').css('background', 'red');
@@ -96,6 +107,13 @@ Writing standard HTML, CSS, and Javascript is all well and good, but in this mod
   }
   ```
 
-- [Markdown](https://en.wikipedia.org/wiki/Markdown) 
+- # [Markdown](https://en.wikipedia.org/wiki/Markdown) 
+![Markdown Icon](images/Markdown.png "Markdown Icon")
 
-  Writing out the html for the code blocks, links, images, etc. is tedious. Markdown is an up-and-coming standard for documentation that takes so little (all of these lessons are found in the [resources => markdown](https://github.com/Andrew-College/Andrew-College.github.io/tree/master/resources/markdown) section of my repository.)
+  ## Description
+  
+  Writing out the html for the code blocks, links, images, etc. is tedious. Markdown is an up-and-coming standard for documentation that takes so little 
+
+  ## Example
+
+  All of these lessons are written in Markdown and can found in the [resources => markdown](https://github.com/Andrew-College/Andrew-College.github.io/tree/master/resources/markdown) section of my repository.

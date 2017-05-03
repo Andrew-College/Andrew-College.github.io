@@ -1,2 +1,41 @@
-li>pre{line-height:1em}code{line-height:1.125em}#lessons-list{margin:5px}#lessons-list>.lesson{cursor:pointer;height:46px;width:32.333%;margin-bottom:8px;padding-left:3px;background:red;list-style:none;display:inline-block;text-align:center}#content{max-height:600px;overflow-y:auto;background:url("../../images/page_pixels.png") top left repeat}#content .gif{width:400px}#content p,#content pre{padding-left:2em}#full-cart{background:rgba(255,255,255,0.9);padding:1%}[class^='hidden-']::before{cursor:pointer;content:"Click Here For The Full Game >"}[class^='shown-']::before{cursor:pointer;content:"Click Here For The Full Game ^"}
+li > pre {
+  line-height: 1em; }
+
+code {
+  line-height: 1.125em; }
+
+#lessons-list {
+  margin: 5px; }
+  #lessons-list > .lesson {
+    cursor: pointer;
+    height: 46px;
+    width: 32.333%;
+    margin-bottom: 8px;
+    padding-left: 3px;
+    background: red;
+    list-style: none;
+    display: inline-block;
+    text-align: center; }
+
+#content {
+  max-height: 600px;
+  overflow-y: auto;
+  background: url("../../images/page_pixels.png") top left repeat; }
+  #content .gif {
+    width: 400px; }
+  #content p, #content pre {
+    padding-left: 2em; }
+
+#full-cart {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1%; }
+
+[class^='hidden-']::before {
+  cursor: pointer;
+  content: "Click Here For The Full Game >"; }
+
+[class^='shown-']::before {
+  cursor: pointer;
+  content: "Click Here For The Full Game ^"; }
+
 /*# sourceMappingURL=lessons.css.map */
