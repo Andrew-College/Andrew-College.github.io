@@ -48,4 +48,28 @@ Getting stuff done involves using <a href="https://code.visualstudio.com/">VS Co
   #content p, #content pre {
     padding-left: 2em; }
 </code></pre>
-<p><img src="images/sass_compiling_code.png" alt="Compiling Sass code (Sass Folder) to Css (Css Folder)" title="Compiling Sass code (Sass Folder) to Css (Css Folder)" /></p>
+<ul>
+<li><a href="https://jquery.com/">JQuery</a> - JQuery is a powerful Javascript library that just makes Javascript so much cooler! JQuery makes complex stuff a doddle!</li>
+</ul>
+<p>For example, the JQuery</p>
+<pre><code class="language-javascript">$('div.header').css('background', 'red');
+</code></pre>
+<p>does exactly the same job as</p>
+<pre><code class="language-javascript">/* 
+* Note - 
+*  This is untested. 
+*  I'm 99.9999% certain this works,
+*  but it is exacly what the Jquery is NOT doing...
+*/
+var divs = document.getElementsByTagName(&quot;div&quot;);
+
+for (var i=0, max=divs.length; i &lt; max; i++) {
+  var elem = divs[0].getElementsByClassName(&quot;header&quot;);
+  for (var elem_i=0, elem_max=elem.length; elem_i &lt; elem_max; elem_i++) {
+    elem[elem_i].style.background = &quot;red&quot;;
+  }
+}
+</code></pre>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> - Writing out the html for the code blocks, links, images, etc. is tedious. Markdown is an up-and-coming standard for documentation that takes so little (all of these lessons are found in the <a href="https://github.com/Andrew-College/Andrew-College.github.io/tree/master/resources/markdown">resources =&gt; markdown</a> section of my repository.)</li>
+</ul>

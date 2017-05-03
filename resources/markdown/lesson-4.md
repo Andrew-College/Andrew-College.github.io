@@ -63,4 +63,31 @@ Will become the following Css:
     padding-left: 2em; }
 ```
 
-![Compiling Sass code (Sass Folder) to Css (Css Folder)](images/sass_compiling_code.png "Compiling Sass code (Sass Folder) to Css (Css Folder)")
+- [JQuery](https://jquery.com/) - JQuery is a powerful Javascript library that just makes Javascript so much cooler! JQuery makes complex stuff a doddle!
+
+For example, the JQuery
+
+```javascript
+$('div.header').css('background', 'red');
+```
+
+does exactly the same job as
+
+```javascript
+/* 
+* Note - 
+*  This is untested. 
+*  I'm 99.9999% certain this works,
+*  but it is exacly what the Jquery is NOT doing...
+*/
+var divs = document.getElementsByTagName("div");
+
+for (var i=0, max=divs.length; i < max; i++) {
+  var elem = divs[0].getElementsByClassName("header");
+  for (var elem_i=0, elem_max=elem.length; elem_i < elem_max; elem_i++) {
+    elem[elem_i].style.background = "red";
+  }
+}
+```
+
+- [Markdown](https://en.wikipedia.org/wiki/Markdown) - Writing out the html for the code blocks, links, images, etc. is tedious. Markdown is an up-and-coming standard for documentation that takes so little (all of these lessons are found in the [resources => markdown](https://github.com/Andrew-College/Andrew-College.github.io/tree/master/resources/markdown) section of my repository.)
