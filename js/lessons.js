@@ -27,7 +27,7 @@ function lesson_clicked(elem) {
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
 
     $('pre').each(function(i, block){hljs.highlightBlock(block);})
-  }, 10);
+  }, 500);
 }
 
 function show_hidden_content(elem, target_id)
