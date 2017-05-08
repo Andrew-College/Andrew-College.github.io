@@ -1,6 +1,11 @@
 function lesson_clicked(elem) {
- 
-  var lesson = $(elem).attr('id');
+  
+  var lesson = null;
+
+  if (typeof elem === 'string' || elem instanceof String)
+    lesson = elem
+  else
+    lesson = $(elem).attr('id');
 
   var lesson_page = null;
   
@@ -22,7 +27,7 @@ function lesson_clicked(elem) {
       'Ooh \'eck, I\'ve lost me notes!!! I can\'t find ' + lesson + ' anywhere!');
 
     $('pre').each(function(i, block){hljs.highlightBlock(block);})
-  }, 1000);
+  }, 10);
 }
 
 function show_hidden_content(elem, target_id)

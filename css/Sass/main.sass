@@ -5,6 +5,10 @@ $phone-width: 768px
 $tablet-width: 992px
 $desktop-width: 1200px
 
+$padding-base: 15px
+
+$text-rotation: 90deg
+
 =transform($name)
 	-webkit-transform : rotate(#{$name})
 	-moz-transform : rotate(#{$name})
@@ -60,11 +64,19 @@ body
 
 .hidden
 	display: none
-	
+
 .rotate
-	+transform(-90deg)
+	+transform(- $text-rotation)
 	+transform-origin(right bottom)
-	padding-top: 15px
+
+	&#Main
+		padding-top: 0
+
+	&#Lessons
+		padding-top: $padding-base
+
+	&#Contribute
+		padding-top: $padding-base + str-length("Contributions   ")
 
 .view-total
 	width: 100vw
